@@ -3,7 +3,6 @@
 import css from "./App.module.css";
 import CafeInfo from "../CafeInfo/CafeInfo";
 import VoteOptions from "../VoteOptions/VoteOptions";
-import type { Votes } from "../../types/votes";
 
 const votes: Votes = {
   good: 0,
