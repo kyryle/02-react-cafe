@@ -5,6 +5,7 @@ import VoteOptions from "../VoteOptions/VoteOptions";
 import VoteStats from "../VoteStats/VoteStats";
 import Notification from "../Notification/Notification";
 import type { Votes } from "../../types/votes";
+import { useState } from "react";
 
 
 const votes: Votes = {
@@ -16,10 +17,23 @@ console.log(votes);
 
 
 export default function App() {
+  const [visible, setVisible] = useState(false)
+  const [clicks, setClicks] = useState(0);
+  
+  const handleClick = () => {
+    setClicks(clicks + 1);
+    console.log(clicks);
+    setVisible(true)
+  };
+
+   const resetVotes = () => {
+    setClicks(0)
+    setVisible(false)
+  };
   return (
     <div className={css.app}>
       <CafeInfo />
-      <VoteOptions onVote="good" onReset='' canReset={true}/>
+      <VoteOptions onVote={handleClick} onReset={resetVotes} canReset={visible}/>
       <VoteStats votes = {votes} totalVotes = {0} positiveRate = {0}/>
       <Notification/>
       </div>
