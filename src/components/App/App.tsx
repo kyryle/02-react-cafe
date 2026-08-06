@@ -17,25 +17,29 @@ console.log(votes);
 
 
 export default function App() {
-  const [clicks, setClicks] = useState(0);
+  const [clicks, setClicks] = useState<Votes>({good: 0, neutral: 0, bad: 0});
   const [visible, setVisible] = useState(false)
 
   
-  const handleClick = () => {
-    setClicks(clicks + 1);
-    console.log(clicks);
+  const handleClick = (click: 'good' | 'neutral' | 'bad') => {
+    setClicks({...clicks, [click] : clicks[click] + 1});
     setVisible(true)
   };
+  const totalVotes = clicks.good + clicks.neutral + clicks.bad
+
+  const positiveRate = totalVotes
+    ? Math.round((votes.good / totalVotes) * 100)
+    : 0
 
    const resetVotes = () => {
-    setClicks(0)
+    setClicks({good: 0, neutral: 0, bad: 0})
     setVisible(false)
   };
   return (
     <div className={css.app}>
       <CafeInfo />
       <VoteOptions onVote={handleClick} onReset={resetVotes} canReset={visible}/>
-      <VoteStats votes = {votes} totalVotes = {0} positiveRate = {0}/>
+      <VoteStats votes = {votes} totalVotes = {totalVotes} positiveRate = {positiveRate}/>
       <Notification/>
       </div>
   );

@@ -1,7 +1,5 @@
 import css from "./VoteOptions.module.css";
 import type { VoteType } from "../../types/votes";
-// import { useState } from "react";
-// import VoteStats from "../VoteStats/VoteStats";
 
  interface VoteOptionsProps {
   onVote: (vote: VoteType) => void;
@@ -14,19 +12,6 @@ export default function VoteOptions({
   onReset,
   canReset,
 }: VoteOptionsProps) {
-  // const [clicks, setClicks] = useState(0);
-  // const [visible, setVisible] = useState(canReset);
-
-  // const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //   setClicks(clicks + 1);
-  //   console.log(clicks);
-  //   setVisible(true)
-  // };
-
-  // const resetVotes = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //   setClicks(0)
-  //   setVisible(false)
-  // };
 
   return (
     <div className={css.container}>
@@ -46,5 +31,4 @@ export default function VoteOptions({
         </>}
     </div>
   );
-  console.log(onVote, onReset, canReset);
 }
