@@ -17,8 +17,9 @@ console.log(votes);
 
 
 export default function App() {
-  const [visible, setVisible] = useState(false)
   const [clicks, setClicks] = useState(0);
+  const [visible, setVisible] = useState(false)
+
   
   const handleClick = () => {
     setClicks(clicks + 1);

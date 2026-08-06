@@ -1,19 +1,19 @@
 import css from "./VoteOptions.module.css";
-// import type { VoteType } from "../../types/votes";
+import type { VoteType } from "../../types/votes";
 // import { useState } from "react";
 // import VoteStats from "../VoteStats/VoteStats";
 
-// export interface VoteOptionsProps {
-//   onVote: ;
-//   onReset: ;
-//   canReset: boolean;
-// }
+ interface VoteOptionsProps {
+  onVote: (vote: VoteType) => void;
+  onReset: () => void;
+  canReset: boolean;
+}
 
 export default function VoteOptions({
   onVote,
   onReset,
   canReset,
-}) {
+}: VoteOptionsProps) {
   // const [clicks, setClicks] = useState(0);
   // const [visible, setVisible] = useState(canReset);
 
@@ -30,13 +30,13 @@ export default function VoteOptions({
 
   return (
     <div className={css.container}>
-      <button className={css.button} onClick={onVote}>
+      <button className={css.button} onClick={() => onVote('good')}>
         Good
       </button>
-      <button className={css.button} onClick={onVote}>
+      <button className={css.button} onClick={() => onVote('neutral')}>
         Neutral
       </button>
-      <button className={css.button} onClick={onVote}>
+      <button className={css.button} onClick={() => onVote('bad')}>
         Bad
       </button>
       {canReset &&<>
